@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Waqt</string>
+    <string name="app_name_arabic">وقت</string>
+    <string name="splash_logo_desc">Waqt Splash Logo</string>
 </resources>
