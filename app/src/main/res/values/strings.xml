@@ -2,4 +2,13 @@
     <string name="app_name">Waqt</string>
     <string name="app_name_arabic">وقت</string>
     <string name="splash_logo_desc">Waqt Splash Logo</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_set_times">Set Times</string>
+    <string name="nav_tasbeeh">Tasbeeh</string>
+    <string name="nav_settings">Settings</string>
+    <string name="next_prayer">Next Prayer</string>
+    <string name="todays_prayers">Today\'s Prayers</string>
+    <string name="asr">Asr</string>
+    <string name="fajr">Fajr</string>
+    <string name="dhuhr">Dhuhr</string>
 </resources>
