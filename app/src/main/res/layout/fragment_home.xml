@@ -150,8 +150,8 @@
                 android:id="@+id/tv_todays_prayers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_24sdp"
                 android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_24sdp"
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/todays_prayers"
                 android:textColor="@color/black"
@@ -164,8 +164,8 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -180,10 +180,12 @@
                     app:cardBackgroundColor="@color/card_bg"
                     app:cardCornerRadius="@dimen/_12sdp"
                     app:cardElevation="0dp">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_12sdp">
+
                         <ImageView
                             android:id="@+id/iv_fajr_icon"
                             android:layout_width="@dimen/_36sdp"
@@ -193,17 +195,19 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"
-                            android:fontFamily="@font/poppins_bold"
+                            android:fontFamily="@font/poppins_semibold"
                             android:text="@string/fajr"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@+id/iv_fajr_icon"
                             app:layout_constraintTop_toTopOf="@+id/iv_fajr_icon" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -212,13 +216,13 @@
                             android:text="04:32 AM"
                             android:textColor="@color/text_dark"
                             android:textSize="14sp"
-                            app:layout_constraintStart_toEndOf="@+id/iv_fajr_icon"
-                            app:layout_constraintBottom_toBottomOf="@+id/iv_fajr_icon" />
+                            app:layout_constraintBottom_toBottomOf="@+id/iv_fajr_icon"
+                            app:layout_constraintStart_toEndOf="@+id/iv_fajr_icon" />
+
                         <ImageView
                             android:layout_width="@dimen/_24sdp"
                             android:layout_height="@dimen/_24sdp"
-                            android:src="@drawable/ic_clock"
-                            app:tint="@color/primary_green"
+                            android:src="@drawable/ic_complete"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -233,10 +237,12 @@
                     app:cardBackgroundColor="@color/card_bg"
                     app:cardCornerRadius="@dimen/_12sdp"
                     app:cardElevation="0dp">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_12sdp">
+
                         <ImageView
                             android:id="@+id/iv_dhuhr_icon"
                             android:layout_width="@dimen/_36sdp"
@@ -246,17 +252,19 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"
-                            android:fontFamily="@font/poppins_bold"
+                            android:fontFamily="@font/poppins_semibold"
                             android:text="@string/dhuhr"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@+id/iv_dhuhr_icon"
                             app:layout_constraintTop_toTopOf="@+id/iv_dhuhr_icon" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -265,13 +273,13 @@
                             android:text="12:15 PM"
                             android:textColor="@color/text_dark"
                             android:textSize="14sp"
-                            app:layout_constraintStart_toEndOf="@+id/iv_dhuhr_icon"
-                            app:layout_constraintBottom_toBottomOf="@+id/iv_dhuhr_icon" />
+                            app:layout_constraintBottom_toBottomOf="@+id/iv_dhuhr_icon"
+                            app:layout_constraintStart_toEndOf="@+id/iv_dhuhr_icon" />
+
                         <ImageView
                             android:layout_width="@dimen/_24sdp"
                             android:layout_height="@dimen/_24sdp"
-                            android:src="@drawable/ic_clock"
-                            app:tint="@color/primary_green"
+                            android:src="@drawable/ic_complete"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -286,12 +294,14 @@
                     app:cardBackgroundColor="@color/card_bg"
                     app:cardCornerRadius="@dimen/_12sdp"
                     app:cardElevation="0dp"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="@color/gold">
+                    app:strokeColor="@color/gold"
+                    app:strokeWidth="1dp">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_12sdp">
+
                         <ImageView
                             android:id="@+id/iv_asr_icon"
                             android:layout_width="@dimen/_36sdp"
@@ -301,17 +311,19 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"
-                            android:fontFamily="@font/poppins_bold"
+                            android:fontFamily="@font/poppins_semibold"
                             android:text="@string/asr"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@+id/iv_asr_icon"
                             app:layout_constraintTop_toTopOf="@+id/iv_asr_icon" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -320,8 +332,9 @@
                             android:text="04:15 PM"
                             android:textColor="@color/text_dark"
                             android:textSize="14sp"
-                            app:layout_constraintStart_toEndOf="@+id/iv_asr_icon"
-                            app:layout_constraintBottom_toBottomOf="@+id/iv_asr_icon" />
+                            app:layout_constraintBottom_toBottomOf="@+id/iv_asr_icon"
+                            app:layout_constraintStart_toEndOf="@+id/iv_asr_icon" />
+
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -340,10 +353,12 @@
                     app:cardBackgroundColor="@color/card_bg"
                     app:cardCornerRadius="@dimen/_12sdp"
                     app:cardElevation="0dp">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_12sdp">
+
                         <ImageView
                             android:id="@+id/iv_maghrib_icon"
                             android:layout_width="@dimen/_36sdp"
@@ -353,17 +368,19 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"
-                            android:fontFamily="@font/poppins_bold"
+                            android:fontFamily="@font/poppins_semibold"
                             android:text="@string/maghrib"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@+id/iv_maghrib_icon"
                             app:layout_constraintTop_toTopOf="@+id/iv_maghrib_icon" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -372,8 +389,9 @@
                             android:text="06:48 PM"
                             android:textColor="@color/text_dark"
                             android:textSize="14sp"
-                            app:layout_constraintStart_toEndOf="@+id/iv_maghrib_icon"
-                            app:layout_constraintBottom_toBottomOf="@+id/iv_maghrib_icon" />
+                            app:layout_constraintBottom_toBottomOf="@+id/iv_maghrib_icon"
+                            app:layout_constraintStart_toEndOf="@+id/iv_maghrib_icon" />
+
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -392,10 +410,12 @@
                     app:cardBackgroundColor="@color/card_bg"
                     app:cardCornerRadius="@dimen/_12sdp"
                     app:cardElevation="0dp">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_12sdp">
+
                         <ImageView
                             android:id="@+id/iv_isha_icon"
                             android:layout_width="@dimen/_36sdp"
@@ -405,17 +425,19 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"
-                            android:fontFamily="@font/poppins_bold"
+                            android:fontFamily="@font/poppins_semibold"
                             android:text="@string/isha"
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@+id/iv_isha_icon"
                             app:layout_constraintTop_toTopOf="@+id/iv_isha_icon" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -424,8 +446,9 @@
                             android:text="08:30 PM"
                             android:textColor="@color/text_dark"
                             android:textSize="14sp"
-                            app:layout_constraintStart_toEndOf="@+id/iv_isha_icon"
-                            app:layout_constraintBottom_toBottomOf="@+id/iv_isha_icon" />
+                            app:layout_constraintBottom_toBottomOf="@+id/iv_isha_icon"
+                            app:layout_constraintStart_toEndOf="@+id/iv_isha_icon" />
+
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
