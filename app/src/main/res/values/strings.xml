@@ -13,4 +13,6 @@
     <string name="dhuhr">Dhuhr</string>
     <string name="maghrib">Maghrib</string>
     <string name="isha">Isha</string>
+    <string name="set_prayer_times">Set Prayer Times</string>
+    <string name="save_schedule_alarms">Save &amp; Schedule Alarms</string>
 </resources>
