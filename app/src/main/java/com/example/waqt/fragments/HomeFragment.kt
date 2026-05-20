@@ -155,7 +155,7 @@ class HomeFragment : Fragment() {
         val name: String,
         val time: String,
         val card: com.google.android.material.card.MaterialCardView,
-        val switch: com.google.android.material.switchmaterial.SwitchMaterial,
+        val switch: com.suke.widget.SwitchButton,
         val completeIcon: android.widget.ImageView
     )
 

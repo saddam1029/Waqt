@@ -88,7 +88,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/fajr"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_18ssp"
+                        android:textSize="@dimen/_15ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/iv_fajr"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -101,7 +101,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="04:32 AM"
                         android:textColor="#3D6B60"
-                        android:textSize="@dimen/_16ssp"
+                        android:textSize="@dimen/_13ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/iv_fajr_arrow"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -154,7 +154,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/dhuhr"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_18ssp"
+                        android:textSize="@dimen/_15ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/iv_dhuhr"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -167,7 +167,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="12:15 PM"
                         android:textColor="#3D6B60"
-                        android:textSize="@dimen/_16ssp"
+                        android:textSize="@dimen/_13ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/iv_dhuhr_arrow"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -220,7 +220,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/asr"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_18ssp"
+                        android:textSize="@dimen/_15ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/iv_asr"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -233,7 +233,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="04:15 PM"
                         android:textColor="#3D6B60"
-                        android:textSize="@dimen/_16ssp"
+                        android:textSize="@dimen/_13ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/iv_asr_arrow"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -286,7 +286,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/maghrib"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_18ssp"
+                        android:textSize="@dimen/_15ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/iv_maghrib"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -299,7 +299,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="06:48 PM"
                         android:textColor="#3D6B60"
-                        android:textSize="@dimen/_16ssp"
+                        android:textSize="@dimen/_13ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/iv_maghrib_arrow"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -352,7 +352,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/isha"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_18ssp"
+                        android:textSize="@dimen/_15ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/iv_isha"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -365,7 +365,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="08:30 PM"
                         android:textColor="#3D6B60"
-                        android:textSize="@dimen/_16ssp"
+                        android:textSize="@dimen/_13ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/iv_isha_arrow"
                         app:layout_constraintTop_toTopOf="parent" />

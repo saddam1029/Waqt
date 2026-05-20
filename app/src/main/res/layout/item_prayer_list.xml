@@ -47,11 +47,12 @@
             app:layout_constraintStart_toStartOf="@+id/tv_prayer_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_prayer_name" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <com.suke.widget.SwitchButton
             android:id="@+id/switch_notification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
+            app:sb_checked="true"
+            app:sb_checked_color="#3D6B60"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

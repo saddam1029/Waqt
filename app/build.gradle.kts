@@ -78,4 +78,7 @@ dependencies {
     // sdp
     implementation("com.intuit.sdp:sdp-android:1.1.1")
     implementation("com.intuit.ssp:ssp-android:1.1.1")
+
+    // Switch Button
+    implementation("com.github.zcweng:switch-button:0.0.3")
 }
