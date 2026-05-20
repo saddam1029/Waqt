@@ -32,7 +32,7 @@
             android:layout_marginStart="@dimen/_12sdp"
             android:text="@string/fajr"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/iv_prayer_icon"
             app:layout_constraintTop_toTopOf="@+id/iv_prayer_icon" />
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:text="00:00 AM"
             android:textColor="@color/text_dark"
-            android:textSize="14sp"
+            android:textSize="@dimen/_14ssp"
             app:layout_constraintStart_toStartOf="@+id/tv_prayer_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_prayer_name" />
 
