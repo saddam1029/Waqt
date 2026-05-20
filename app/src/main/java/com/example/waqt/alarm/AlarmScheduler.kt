@@ -1,5 +1,6 @@
 package com.example.waqt.alarm
 
+import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
@@ -22,6 +23,7 @@ object AlarmScheduler {
         }
     }
 
+    @SuppressLint("ScheduleExactAlarm")
     fun schedule(context: Context, prayerKey: String, time: String) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val (hour, minute) = parseTime(time)

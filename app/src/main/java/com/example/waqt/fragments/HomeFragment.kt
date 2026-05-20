@@ -76,7 +76,7 @@ class HomeFragment : Fragment() {
                 set(Calendar.MILLISECOND, 0)
             }
             val diff = prayerCal.timeInMillis - now.timeInMillis
-            if (diff > 0 && diff < nextMinutesAway) {
+            if (diff in 1..<nextMinutesAway) {
                 nextMinutesAway = diff
                 nextName = name
             }

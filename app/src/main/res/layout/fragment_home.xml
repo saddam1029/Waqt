@@ -209,6 +209,7 @@
                             app:layout_constraintTop_toTopOf="@+id/iv_fajr_icon" />
 
                         <TextView
+                            android:id="@+id/tv_fajr_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"
@@ -266,6 +267,7 @@
                             app:layout_constraintTop_toTopOf="@+id/iv_dhuhr_icon" />
 
                         <TextView
+                            android:id="@+id/tv_dhuhr_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"
@@ -325,6 +327,7 @@
                             app:layout_constraintTop_toTopOf="@+id/iv_asr_icon" />
 
                         <TextView
+                            android:id="@+id/tv_asr_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"
@@ -382,6 +385,7 @@
                             app:layout_constraintTop_toTopOf="@+id/iv_maghrib_icon" />
 
                         <TextView
+                            android:id="@+id/tv_maghrib_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"
@@ -439,6 +443,7 @@
                             app:layout_constraintTop_toTopOf="@+id/iv_isha_icon" />
 
                         <TextView
+                            android:id="@+id/tv_isha_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"

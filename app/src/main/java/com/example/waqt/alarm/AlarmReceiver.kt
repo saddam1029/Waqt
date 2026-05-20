@@ -46,7 +46,7 @@ class AlarmReceiver : BroadcastReceiver() {
         )
 
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_mosque)
+            .setSmallIcon(R.drawable.iv_theme_night)
             .setContentTitle("Time for $prayerName")
             .setContentText("It is now time for $prayerName prayer")
             .setStyle(

@@ -8,4 +8,7 @@
     <color name="primary_green">#2D5A4C</color>
     <color name="card_bg">#FFFFFF</color>
     <color name="text_dark">#333333</color>
+    <color name="primary">@color/primary_green</color>
+    <color name="text_muted">#6E6E73</color>
+    <color name="divider">#EBEBEB</color>
 </resources>

@@ -5,9 +5,7 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
-    <receiver
-        android:name=".alarm.AlarmReceiver"
-        android:exported="false" />
+
 
     <application
         android:allowBackup="true"
@@ -29,6 +27,9 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+        <receiver
+            android:name=".alarm.AlarmReceiver"
+            android:exported="false" />
     </application>
 
 </manifest>

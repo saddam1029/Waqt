@@ -23,7 +23,7 @@ class SetTimesFragment : Fragment() {
         "dhuhr" to "12:15",
         "asr" to "04:15",
         "maghrib" to "06:48",
-        "isha" to "08:30"
+        "isha" to "08:30",
     )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -71,7 +71,7 @@ class SetTimesFragment : Fragment() {
             Triple(binding.cardDhuhr, "dhuhr", R.drawable.iv_dhuhr_icon),
             Triple(binding.cardAsr, "asr", R.drawable.iv_dhuhr_icon),
             Triple(binding.cardMaghrib, "maghrib", R.drawable.iv_maghrib_icon),
-            Triple(binding.cardIsha, "isha", R.drawable.iv_isha_icon)
+            Triple(binding.cardIsha, "isha", R.drawable.iv_isha_icon),
         )
 
         for ((card, key, icon) in cards) {
@@ -81,7 +81,7 @@ class SetTimesFragment : Fragment() {
                     prayerName = key.replaceFirstChar { it.uppercase() },
                     prayerIcon = icon,
                     initialHour = h,
-                    initialMinute = m
+                    initialMinute = m,
                 ) { hour, minute ->
                     val formatted = "%02d:%02d".format(hour, minute)
                     times[key] = formatted
