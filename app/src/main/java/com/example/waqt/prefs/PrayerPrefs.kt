@@ -15,9 +15,9 @@ class PrayerPrefs(context: Context) {
 
         const val DEFAULT_FAJR = "04:32"
         const val DEFAULT_DHUHR = "12:15"
-        const val DEFAULT_ASR = "04:15"
-        const val DEFAULT_MAGHRIB = "06:48"
-        const val DEFAULT_ISHA = "08:30"
+        const val DEFAULT_ASR = "16:15"
+        const val DEFAULT_MAGHRIB = "18:48"
+        const val DEFAULT_ISHA = "20:30"
     }
 
     var fajr: String

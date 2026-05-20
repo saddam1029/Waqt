@@ -174,6 +174,7 @@
 
                 <!-- Fajr -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_fajr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_8sdp"
@@ -198,7 +199,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView"
+                            android:id="@+id/tv_fajr_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"
@@ -214,18 +215,29 @@
                             android:id="@+id/tv_fajr_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginStart="@dimen/_12sdp"
                             android:fontFamily="@font/poppin_regular"
                             android:text="04:32 AM"
                             android:textColor="@color/text_dark"
                             android:textSize="@dimen/_11ssp"
                             app:layout_constraintStart_toEndOf="@+id/iv_fajr_icon"
-                            app:layout_constraintTop_toBottomOf="@+id/textView" />
+                            app:layout_constraintTop_toBottomOf="@+id/tv_fajr_label" />
 
                         <ImageView
+                            android:id="@+id/iv_fajr_complete"
                             android:layout_width="@dimen/_24sdp"
                             android:layout_height="@dimen/_24sdp"
                             android:src="@drawable/ic_complete"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switch_fajr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -234,6 +246,7 @@
 
                 <!-- Dhuhr -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_dhuhr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_8sdp"
@@ -258,7 +271,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView5"
+                            android:id="@+id/tv_dhuhr_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"
@@ -280,20 +293,32 @@
                             android:textColor="@color/text_dark"
                             android:textSize="@dimen/_11ssp"
                             app:layout_constraintStart_toEndOf="@+id/iv_dhuhr_icon"
-                            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                            app:layout_constraintTop_toBottomOf="@+id/tv_dhuhr_label" />
 
                         <ImageView
+                            android:id="@+id/iv_dhuhr_complete"
                             android:layout_width="@dimen/_24sdp"
                             android:layout_height="@dimen/_24sdp"
                             android:src="@drawable/ic_complete"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switch_dhuhr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Asr (Highlighted) -->
+                <!-- Asr -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_asr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_8sdp"
@@ -320,7 +345,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView4"
+                            android:id="@+id/tv_asr_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"
@@ -342,9 +367,20 @@
                             android:textColor="@color/text_dark"
                             android:textSize="@dimen/_11ssp"
                             app:layout_constraintStart_toEndOf="@+id/iv_asr_icon"
-                            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                            app:layout_constraintTop_toBottomOf="@+id/tv_asr_label" />
+
+                        <ImageView
+                            android:id="@+id/iv_asr_complete"
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
+                            android:src="@drawable/ic_complete"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switch_asr"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"
@@ -356,6 +392,7 @@
 
                 <!-- Maghrib -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_maghrib"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_8sdp"
@@ -380,7 +417,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView3"
+                            android:id="@+id/tv_maghrib_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"
@@ -402,9 +439,20 @@
                             android:textColor="@color/text_dark"
                             android:textSize="@dimen/_11ssp"
                             app:layout_constraintStart_toEndOf="@+id/iv_maghrib_icon"
-                            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                            app:layout_constraintTop_toBottomOf="@+id/tv_maghrib_label" />
+
+                        <ImageView
+                            android:id="@+id/iv_maghrib_complete"
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
+                            android:src="@drawable/ic_complete"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switch_maghrib"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"
@@ -416,6 +464,7 @@
 
                 <!-- Isha -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_isha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_8sdp"
@@ -440,7 +489,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView2"
+                            android:id="@+id/tv_isha_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_12sdp"
@@ -462,9 +511,20 @@
                             android:textColor="@color/text_dark"
                             android:textSize="@dimen/_11ssp"
                             app:layout_constraintStart_toEndOf="@+id/iv_isha_icon"
-                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                            app:layout_constraintTop_toBottomOf="@+id/tv_isha_label" />
+
+                        <ImageView
+                            android:id="@+id/iv_isha_complete"
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
+                            android:src="@drawable/ic_complete"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switch_isha"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"

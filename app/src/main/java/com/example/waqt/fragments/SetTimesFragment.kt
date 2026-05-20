@@ -21,9 +21,9 @@ class SetTimesFragment : Fragment() {
     private val times = mutableMapOf(
         "fajr" to "04:32",
         "dhuhr" to "12:15",
-        "asr" to "04:15",
-        "maghrib" to "06:48",
-        "isha" to "08:30",
+        "asr" to "16:15",
+        "maghrib" to "18:48",
+        "isha" to "20:30",
     )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {

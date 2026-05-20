@@ -6,7 +6,9 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.waqt.R
 import com.example.waqt.databinding.FragmentHomeBinding
 import com.example.waqt.prefs.PrayerPrefs
 import java.util.Calendar
@@ -38,7 +40,8 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         loadTimes()
-        handler.post(countdownRunnable)
+        updateCountdown() // Initial update
+        handler.postDelayed(countdownRunnable, 60_000)
     }
 
     override fun onPause() {
@@ -101,13 +104,65 @@ class HomeFragment : Fragment() {
         val countdownText = if (hours > 0) "in ${hours}h ${minutes}m" else "in ${minutes}m"
 
         binding.tvNextPrayerName.text = nextName
-        binding.tvNextPrayerTime.text = formatTo12Hour(prefs.getAll()[nextName.lowercase()] ?: "")
+        binding.tvNextPrayerTime.text = formatTo12Hour(prayers[nextName] ?: "")
         binding.tvTimeRemaining.text = countdownText
+
+        updatePrayerListUI(nextName)
     }
+
+    private fun updatePrayerListUI(nextName: String) {
+        val now = Calendar.getInstance()
+        val goldColor = ContextCompat.getColor(requireContext(), R.color.gold)
+        val strokeWidth = resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._1sdp)
+
+        val prayerItems = listOf(
+            PrayerItem("Fajr", prefs.fajr, binding.cardFajr, binding.switchFajr, binding.ivFajrComplete),
+            PrayerItem("Dhuhr", prefs.dhuhr, binding.cardDhuhr, binding.switchDhuhr, binding.ivDhuhrComplete),
+            PrayerItem("Asr", prefs.asr, binding.cardAsr, binding.switchAsr, binding.ivAsrComplete),
+            PrayerItem("Maghrib", prefs.maghrib, binding.cardMaghrib, binding.switchMaghrib, binding.ivMaghribComplete),
+            PrayerItem("Isha", prefs.isha, binding.cardIsha, binding.switchIsha, binding.ivIshaComplete)
+        )
+
+        for (item in prayerItems) {
+            val (h, m) = parseTime(item.time)
+            val prayerCal = Calendar.getInstance().apply {
+                set(Calendar.HOUR_OF_DAY, h)
+                set(Calendar.MINUTE, m)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+
+            // Highlight Next Prayer
+            if (item.name == nextName) {
+                item.card.strokeColor = goldColor
+                item.card.strokeWidth = strokeWidth
+            } else {
+                item.card.strokeWidth = 0
+            }
+
+            // Toggle Switch vs Complete Icon
+            if (now.after(prayerCal)) {
+                item.switch.visibility = View.GONE
+                item.completeIcon.visibility = View.VISIBLE
+            } else {
+                item.switch.visibility = View.VISIBLE
+                item.completeIcon.visibility = View.GONE
+            }
+        }
+    }
+
+    private data class PrayerItem(
+        val name: String,
+        val time: String,
+        val card: com.google.android.material.card.MaterialCardView,
+        val switch: com.google.android.material.switchmaterial.SwitchMaterial,
+        val completeIcon: android.widget.ImageView
+    )
 
     private fun parseTime(time: String): Pair<Int, Int> {
         val parts = time.split(":")
-        return Pair(parts[0].toInt(), parts[1].toInt())
+        if (parts.size != 2) return Pair(0, 0)
+        return Pair(parts[0].toIntOrNull() ?: 0, parts[1].toIntOrNull() ?: 0)
     }
 
     private fun formatTo12Hour(time: String): String {
