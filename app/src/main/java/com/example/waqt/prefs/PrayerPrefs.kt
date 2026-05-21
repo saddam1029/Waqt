@@ -1,10 +1,15 @@
 package com.example.waqt.prefs
 
 import android.content.Context
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 
 class PrayerPrefs(context: Context) {
 
     private val prefs = context.getSharedPreferences("prayer_times", Context.MODE_PRIVATE)
+    
+    private val _changes = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
+    val changes = _changes.asSharedFlow()
 
     companion object {
         const val KEY_FAJR = "fajr"
@@ -22,23 +27,38 @@ class PrayerPrefs(context: Context) {
 
     var fajr: String
         get() = prefs.getString(KEY_FAJR, DEFAULT_FAJR) ?: DEFAULT_FAJR
-        set(v) = prefs.edit().putString(KEY_FAJR, v).apply()
+        set(v) {
+            prefs.edit().putString(KEY_FAJR, v).apply()
+            _changes.tryEmit(Unit)
+        }
 
     var dhuhr: String
         get() = prefs.getString(KEY_DHUHR, DEFAULT_DHUHR) ?: DEFAULT_DHUHR
-        set(v) = prefs.edit().putString(KEY_DHUHR, v).apply()
+        set(v) {
+            prefs.edit().putString(KEY_DHUHR, v).apply()
+            _changes.tryEmit(Unit)
+        }
 
     var asr: String
         get() = prefs.getString(KEY_ASR, DEFAULT_ASR) ?: DEFAULT_ASR
-        set(v) = prefs.edit().putString(KEY_ASR, v).apply()
+        set(v) {
+            prefs.edit().putString(KEY_ASR, v).apply()
+            _changes.tryEmit(Unit)
+        }
 
     var maghrib: String
         get() = prefs.getString(KEY_MAGHRIB, DEFAULT_MAGHRIB) ?: DEFAULT_MAGHRIB
-        set(v) = prefs.edit().putString(KEY_MAGHRIB, v).apply()
+        set(v) {
+            prefs.edit().putString(KEY_MAGHRIB, v).apply()
+            _changes.tryEmit(Unit)
+        }
 
     var isha: String
         get() = prefs.getString(KEY_ISHA, DEFAULT_ISHA) ?: DEFAULT_ISHA
-        set(v) = prefs.edit().putString(KEY_ISHA, v).apply()
+        set(v) {
+            prefs.edit().putString(KEY_ISHA, v).apply()
+            _changes.tryEmit(Unit)
+        }
 
     fun saveAll(fajr: String, dhuhr: String, asr: String, maghrib: String, isha: String) {
         prefs.edit()
@@ -48,6 +68,7 @@ class PrayerPrefs(context: Context) {
             .putString(KEY_MAGHRIB, maghrib)
             .putString(KEY_ISHA, isha)
             .apply()
+        _changes.tryEmit(Unit)
     }
 
     fun getAll(): Map<String, String> = mapOf(

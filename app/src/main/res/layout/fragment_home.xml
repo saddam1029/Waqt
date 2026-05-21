@@ -235,8 +235,8 @@
 
                         <com.suke.widget.SwitchButton
                             android:id="@+id/switch_fajr"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/_45sdp"
+                            android:layout_height="@dimen/_25sdp"
                             app:sb_checked="true"
                             app:sb_checked_color="#3D6B60"
                             app:layout_constraintBottom_toBottomOf="parent"

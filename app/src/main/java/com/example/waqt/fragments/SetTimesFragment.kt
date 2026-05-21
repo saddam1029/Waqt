@@ -10,13 +10,19 @@ import com.example.waqt.R
 import com.example.waqt.alarm.AlarmScheduler
 import com.example.waqt.databinding.FragmentSetTimesBinding
 import com.example.waqt.prefs.PrayerPrefs
+import com.example.waqt.utils.TimeUtils.formatTo12Hour
+import com.example.waqt.utils.TimeUtils.parseTime
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SetTimesFragment : Fragment() {
 
     private var _binding: FragmentSetTimesBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var prefs: PrayerPrefs
+    @Inject
+    lateinit var prefs: PrayerPrefs
 
     private val times = mutableMapOf(
         "fajr" to "04:32",
@@ -34,7 +40,6 @@ class SetTimesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        prefs = PrayerPrefs(requireContext())
         loadSavedTimes()
         updateTimeViews()
 
@@ -103,22 +108,6 @@ class SetTimesFragment : Fragment() {
         AlarmScheduler.scheduleAll(requireContext(), times)
 
         Toast.makeText(requireContext(), getString(R.string.alarms_scheduled), Toast.LENGTH_SHORT).show()
-    }
-
-    private fun parseTime(time: String): Pair<Int, Int> {
-        val parts = time.split(":")
-        return Pair(parts[0].toInt(), parts[1].toInt())
-    }
-
-    private fun formatTo12Hour(time: String): String {
-        val (h, m) = parseTime(time)
-        val amPm = if (h < 12) "AM" else "PM"
-        val hour12 = when {
-            h == 0 -> 12
-            h > 12 -> h - 12
-            else -> h
-        }
-        return "%02d:%02d %s".format(hour12, m, amPm)
     }
 
     override fun onDestroyView() {

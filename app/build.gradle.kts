@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
 }
 
@@ -38,6 +39,9 @@ android {
     }
 }
 
+hilt {
+    enableAggregatingTask = true
+}
 
 kotlin {
     jvmToolchain(11)
@@ -59,8 +63,8 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.51")
-    kapt("com.google.dagger:hilt-android-compiler:2.51")
+    implementation(libs.dagger.hilt.android)
+    ksp(libs.dagger.hilt.compiler)
 
     // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
