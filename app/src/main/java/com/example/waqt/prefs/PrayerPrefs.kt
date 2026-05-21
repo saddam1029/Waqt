@@ -86,6 +86,14 @@ class PrayerPrefs(context: Context) {
         get() = prefs.getBoolean(KEY_ISHA_ENABLED, true)
         set(v) = prefs.edit().putBoolean(KEY_ISHA_ENABLED, v).apply()
 
+    var adhanSound: String?
+        get() = prefs.getString("adhan_sound", null)
+        set(v) = prefs.edit().putString("adhan_sound", v).apply()
+
+    var adhanSoundName: String
+        get() = prefs.getString("adhan_sound_name", "Default") ?: "Default"
+        set(v) = prefs.edit().putString("adhan_sound_name", v).apply()
+
     fun saveAll(fajr: String, dhuhr: String, asr: String, maghrib: String, isha: String) {
         prefs.edit()
             .putString(KEY_FAJR, fajr)

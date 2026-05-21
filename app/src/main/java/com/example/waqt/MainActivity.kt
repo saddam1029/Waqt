@@ -1,17 +1,38 @@
 package com.example.waqt
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
+import androidx.fragment.app.Fragment
+import com.example.waqt.fragments.HomeFragment
+import com.example.waqt.fragments.SetTimesFragment
+import com.example.waqt.fragments.SettingsFragment
+import com.example.waqt.fragments.TasbeehFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    private val homeFragment = HomeFragment()
+    private val setTimesFragment = SetTimesFragment()
+    private val tasbeehFragment = TasbeehFragment()
+    private val settingsFragment = SettingsFragment()
+    private var activeFragment: Fragment = homeFragment
+
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { _ ->
+        // Permission result handled by system
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,11 +43,56 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        setupNavigation()
+        checkAndRequestPermissions()
+    }
 
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
+    private fun setupNavigation() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNav.setupWithNavController(navController)
+
+        supportFragmentManager.beginTransaction().apply {
+            add(R.id.nav_host_fragment, settingsFragment, "settings").hide(settingsFragment)
+            add(R.id.nav_host_fragment, tasbeehFragment, "tasbeeh").hide(tasbeehFragment)
+            add(R.id.nav_host_fragment, setTimesFragment, "setTimes").hide(setTimesFragment)
+            add(R.id.nav_host_fragment, homeFragment, "home")
+            commit()
+        }
+
+        bottomNav.setOnItemSelectedListener { item ->
+            val target = when (item.itemId) {
+                R.id.navigation_home -> homeFragment
+                R.id.navigation_set_times -> setTimesFragment
+                R.id.navigation_tasbeeh -> tasbeehFragment
+                R.id.navigation_settings -> settingsFragment
+                else -> homeFragment
+            }
+
+            if (target != activeFragment) {
+                supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(
+                        android.R.anim.fade_in,
+                        android.R.anim.fade_out
+                    )
+                    .hide(activeFragment)
+                    .show(target)
+                    .commit()
+                activeFragment = target
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun checkAndRequestPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
     }
 }

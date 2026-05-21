@@ -27,6 +27,7 @@
     <string name="notifications_caps">NOTIFICATIONS</string>
     <string name="notification_permission">Notification Permission</string>
     <string name="granted">Granted</string>
+    <string name="not_granted">Not Granted</string>
     <string name="adhan_sound">Adhan Sound</string>
     <string name="makkah_adhan">Makkah Adhan</string>
     <string name="prayer_alarms">PRAYER ALARMS</string>
