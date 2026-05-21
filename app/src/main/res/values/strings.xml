@@ -21,4 +21,15 @@
     <string name="cancel">Cancel</string>
     <string name="set_time">Set Time</string>
     <string name="alarms_scheduled">Alarms scheduled!</string>
+
+    <string name="appearance">APPEARANCE</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="notifications_caps">NOTIFICATIONS</string>
+    <string name="notification_permission">Notification Permission</string>
+    <string name="granted">Granted</string>
+    <string name="adhan_sound">Adhan Sound</string>
+    <string name="makkah_adhan">Makkah Adhan</string>
+    <string name="prayer_alarms">PRAYER ALARMS</string>
+    <string name="general">GENERAL</string>
+    <string name="about_waqt">About Waqt</string>
 </resources>

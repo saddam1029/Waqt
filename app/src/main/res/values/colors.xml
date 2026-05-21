@@ -11,4 +11,7 @@
     <color name="primary">@color/primary_green</color>
     <color name="text_muted">#6E6E73</color>
     <color name="divider">#EBEBEB</color>
+    <color name="section_title">#8E8E93</color>
+    <color name="badge_bg">#E8F5E9</color>
+    <color name="badge_text">#4CAF50</color>
 </resources>

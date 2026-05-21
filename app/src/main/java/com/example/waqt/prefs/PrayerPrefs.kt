@@ -18,6 +18,12 @@ class PrayerPrefs(context: Context) {
         const val KEY_MAGHRIB = "maghrib"
         const val KEY_ISHA = "isha"
 
+        const val KEY_FAJR_ENABLED = "fajr_enabled"
+        const val KEY_DHUHR_ENABLED = "dhuhr_enabled"
+        const val KEY_ASR_ENABLED = "asr_enabled"
+        const val KEY_MAGHRIB_ENABLED = "maghrib_enabled"
+        const val KEY_ISHA_ENABLED = "isha_enabled"
+
         const val DEFAULT_FAJR = "04:32"
         const val DEFAULT_DHUHR = "12:15"
         const val DEFAULT_ASR = "16:15"
@@ -59,6 +65,26 @@ class PrayerPrefs(context: Context) {
             prefs.edit().putString(KEY_ISHA, v).apply()
             _changes.tryEmit(Unit)
         }
+
+    var fajrEnabled: Boolean
+        get() = prefs.getBoolean(KEY_FAJR_ENABLED, true)
+        set(v) = prefs.edit().putBoolean(KEY_FAJR_ENABLED, v).apply()
+
+    var dhuhrEnabled: Boolean
+        get() = prefs.getBoolean(KEY_DHUHR_ENABLED, true)
+        set(v) = prefs.edit().putBoolean(KEY_DHUHR_ENABLED, v).apply()
+
+    var asrEnabled: Boolean
+        get() = prefs.getBoolean(KEY_ASR_ENABLED, true)
+        set(v) = prefs.edit().putBoolean(KEY_ASR_ENABLED, v).apply()
+
+    var maghribEnabled: Boolean
+        get() = prefs.getBoolean(KEY_MAGHRIB_ENABLED, true)
+        set(v) = prefs.edit().putBoolean(KEY_MAGHRIB_ENABLED, v).apply()
+
+    var ishaEnabled: Boolean
+        get() = prefs.getBoolean(KEY_ISHA_ENABLED, true)
+        set(v) = prefs.edit().putBoolean(KEY_ISHA_ENABLED, v).apply()
 
     fun saveAll(fajr: String, dhuhr: String, asr: String, maghrib: String, isha: String) {
         prefs.edit()

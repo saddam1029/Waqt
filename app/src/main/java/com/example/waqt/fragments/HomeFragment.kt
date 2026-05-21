@@ -29,6 +29,9 @@ class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels()
 
+    @javax.inject.Inject
+    lateinit var prefs: com.example.waqt.prefs.PrayerPrefs
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -37,6 +40,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
+        setupSwitchListeners()
+    }
+
+    private fun setupSwitchListeners() {
+        binding.switchFajr.setOnCheckedChangeListener { _, isChecked -> prefs.fajrEnabled = isChecked }
+        binding.switchDhuhr.setOnCheckedChangeListener { _, isChecked -> prefs.dhuhrEnabled = isChecked }
+        binding.switchAsr.setOnCheckedChangeListener { _, isChecked -> prefs.asrEnabled = isChecked }
+        binding.switchMaghrib.setOnCheckedChangeListener { _, isChecked -> prefs.maghribEnabled = isChecked }
+        binding.switchIsha.setOnCheckedChangeListener { _, isChecked -> prefs.ishaEnabled = isChecked }
     }
 
     private fun observeViewModel() {
@@ -100,6 +112,16 @@ class HomeFragment : Fragment() {
 
             val switch = item.third.first
             val completeIcon = item.third.second
+
+            // Set switch state from prefs
+            switch.isChecked = when(item.first) {
+                "Fajr" -> prefs.fajrEnabled
+                "Dhuhr" -> prefs.dhuhrEnabled
+                "Asr" -> prefs.asrEnabled
+                "Maghrib" -> prefs.maghribEnabled
+                "Isha" -> prefs.ishaEnabled
+                else -> true
+            }
 
             if (now.after(prayerCal)) {
                 switch.visibility = View.GONE
