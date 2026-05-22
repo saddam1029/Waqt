@@ -33,4 +33,16 @@
     <string name="prayer_alarms">PRAYER ALARMS</string>
     <string name="general">GENERAL</string>
     <string name="about_waqt">About Waqt</string>
+
+    <!-- Add these to your existing strings.xml -->
+    <string name="tasbeeh">Tasbeeh</string>
+    <string name="subhanallah">SubhanAllah</string>
+    <string name="alhamdulillah">Alhamdulillah</string>
+    <string name="allahuakbar">Allahu Akbar</string>
+    <string name="reset">Reset</string>
+    <string name="dhikr_format">%1$d × %2$s</string>
+    <string name="dhikr_subhan_full">33 × SubhanAllah</string>
+    <string name="pill_subhan_text">33 Subhan</string>
+    <string name="pill_alhamd_text">33 Alhamdulillah</string>
+    <string name="pill_allahu_text">33 Allahu Akbar</string>
 </resources>
