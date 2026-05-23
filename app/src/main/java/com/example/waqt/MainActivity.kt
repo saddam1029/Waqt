@@ -4,6 +4,9 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
+import android.view.animation.OvershootInterpolator
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -68,6 +71,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             if (target != activeFragment) {
+                animateBottomNavItem(item.itemId)
                 supportFragmentManager.beginTransaction()
                     .setCustomAnimations(
                         android.R.anim.fade_in,
@@ -92,6 +96,35 @@ class MainActivity : AppCompatActivity() {
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
+    }
+
+    private fun animateBottomNavItem(itemId: Int) {
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        val menuView = bottomNav.getChildAt(0) as ViewGroup
+
+        for (i in 0 until menuView.childCount) {
+            val itemView = menuView.getChildAt(i)
+            if (itemView.id == itemId) {
+                // Try to find the icon view, fallback to the item view itself
+                val icon = itemView.findViewById<View>(com.google.android.material.R.id.navigation_bar_item_icon_view)
+                    ?: itemView
+
+                icon.animate()
+                    .scaleX(1.2f)
+                    .scaleY(1.2f)
+                    .setDuration(150)
+                    .setInterpolator(OvershootInterpolator(3f))
+                    .withEndAction {
+                        icon.animate()
+                            .scaleX(1f)
+                            .scaleY(1f)
+                            .setDuration(150)
+                            .start()
+                    }
+                    .start()
+                break
             }
         }
     }
