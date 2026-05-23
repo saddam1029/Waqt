@@ -14,15 +14,20 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.waqt.R
 import com.example.waqt.databinding.FragmentSettingsBinding
 import com.example.waqt.prefs.PrayerPrefs
+import kotlinx.coroutines.launch
 
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
     private lateinit var prefs: PrayerPrefs
+    private var isUpdatingUi = false
 
     private val soundPickerLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -60,6 +65,7 @@ class SettingsFragment : Fragment() {
         setupSwitches()
         updatePermissionStatus()
         setupSoundSelection()
+        observeSettingsChanges()
     }
 
     private fun setupSoundSelection() {
@@ -98,32 +104,49 @@ class SettingsFragment : Fragment() {
     }
 
     private fun setupSwitches() {
-        // ... rest of the function remains same
-
-        // Prayer Alarms
-        binding.switchFajr.isChecked = prefs.fajrEnabled
         binding.switchFajr.setOnCheckedChangeListener { _, isChecked ->
-            prefs.fajrEnabled = isChecked
+            if (!isUpdatingUi) prefs.fajrEnabled = isChecked
         }
-
-        binding.switchDhuhr.isChecked = prefs.dhuhrEnabled
         binding.switchDhuhr.setOnCheckedChangeListener { _, isChecked ->
-            prefs.dhuhrEnabled = isChecked
+            if (!isUpdatingUi) prefs.dhuhrEnabled = isChecked
         }
-
-        binding.switchAsr.isChecked = prefs.asrEnabled
         binding.switchAsr.setOnCheckedChangeListener { _, isChecked ->
-            prefs.asrEnabled = isChecked
+            if (!isUpdatingUi) prefs.asrEnabled = isChecked
         }
-
-        binding.switchMaghrib.isChecked = prefs.maghribEnabled
         binding.switchMaghrib.setOnCheckedChangeListener { _, isChecked ->
-            prefs.maghribEnabled = isChecked
+            if (!isUpdatingUi) prefs.maghribEnabled = isChecked
         }
-
-        binding.switchIsha.isChecked = prefs.ishaEnabled
         binding.switchIsha.setOnCheckedChangeListener { _, isChecked ->
-            prefs.ishaEnabled = isChecked
+            if (!isUpdatingUi) prefs.ishaEnabled = isChecked
+        }
+        
+        updateSwitchesFromPrefs()
+    }
+
+    private fun observeSettingsChanges() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                prefs.changes.collect {
+                    updateSwitchesFromPrefs()
+                }
+            }
+        }
+    }
+
+    private fun updateSwitchesFromPrefs() {
+        isUpdatingUi = true
+        binding.switchFajr.isChecked = prefs.fajrEnabled
+        binding.switchDhuhr.isChecked = prefs.dhuhrEnabled
+        binding.switchAsr.isChecked = prefs.asrEnabled
+        binding.switchMaghrib.isChecked = prefs.maghribEnabled
+        binding.switchIsha.isChecked = prefs.ishaEnabled
+        isUpdatingUi = false
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden) {
+            updateSwitchesFromPrefs()
         }
     }
 

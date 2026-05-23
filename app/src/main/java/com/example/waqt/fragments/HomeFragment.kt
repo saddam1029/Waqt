@@ -28,6 +28,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: HomeViewModel by viewModels()
+    private var isUpdatingUi = false
 
     @javax.inject.Inject
     lateinit var prefs: com.example.waqt.prefs.PrayerPrefs
@@ -44,11 +45,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupSwitchListeners() {
-        binding.switchFajr.setOnCheckedChangeListener { _, isChecked -> prefs.fajrEnabled = isChecked }
-        binding.switchDhuhr.setOnCheckedChangeListener { _, isChecked -> prefs.dhuhrEnabled = isChecked }
-        binding.switchAsr.setOnCheckedChangeListener { _, isChecked -> prefs.asrEnabled = isChecked }
-        binding.switchMaghrib.setOnCheckedChangeListener { _, isChecked -> prefs.maghribEnabled = isChecked }
-        binding.switchIsha.setOnCheckedChangeListener { _, isChecked -> prefs.ishaEnabled = isChecked }
+        binding.switchFajr.setOnCheckedChangeListener { _, isChecked -> 
+            if (!isUpdatingUi) prefs.fajrEnabled = isChecked 
+        }
+        binding.switchDhuhr.setOnCheckedChangeListener { _, isChecked -> 
+            if (!isUpdatingUi) prefs.dhuhrEnabled = isChecked 
+        }
+        binding.switchAsr.setOnCheckedChangeListener { _, isChecked -> 
+            if (!isUpdatingUi) prefs.asrEnabled = isChecked 
+        }
+        binding.switchMaghrib.setOnCheckedChangeListener { _, isChecked -> 
+            if (!isUpdatingUi) prefs.maghribEnabled = isChecked 
+        }
+        binding.switchIsha.setOnCheckedChangeListener { _, isChecked -> 
+            if (!isUpdatingUi) prefs.ishaEnabled = isChecked 
+        }
     }
 
     private fun observeViewModel() {
@@ -64,7 +75,21 @@ class HomeFragment : Fragment() {
                         nextInfo?.let { updateNextPrayerUI(it) }
                     }
                 }
+                launch {
+                    prefs.changes.collect {
+                        viewModel.refreshTimes()
+                        updatePrayerListStatus(viewModel.prayerTimes.value)
+                    }
+                }
             }
+        }
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden) {
+            viewModel.refreshTimes()
+            updatePrayerListStatus(viewModel.prayerTimes.value)
         }
     }
 
@@ -92,6 +117,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun updatePrayerListStatus(times: PrayerTimes) {
+        isUpdatingUi = true
         val now = Calendar.getInstance()
         val prayerItems = listOf(
             Triple("Fajr", times.fajr, Pair(binding.switchFajr, binding.ivFajrComplete)),
@@ -131,6 +157,7 @@ class HomeFragment : Fragment() {
                 completeIcon.visibility = View.GONE
             }
         }
+        isUpdatingUi = false
     }
 
     private fun highlightNextPrayer(nextName: String) {

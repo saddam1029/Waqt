@@ -68,23 +68,38 @@ class PrayerPrefs(context: Context) {
 
     var fajrEnabled: Boolean
         get() = prefs.getBoolean(KEY_FAJR_ENABLED, true)
-        set(v) = prefs.edit().putBoolean(KEY_FAJR_ENABLED, v).apply()
+        set(v) {
+            prefs.edit().putBoolean(KEY_FAJR_ENABLED, v).apply()
+            _changes.tryEmit(Unit)
+        }
 
     var dhuhrEnabled: Boolean
         get() = prefs.getBoolean(KEY_DHUHR_ENABLED, true)
-        set(v) = prefs.edit().putBoolean(KEY_DHUHR_ENABLED, v).apply()
+        set(v) {
+            prefs.edit().putBoolean(KEY_DHUHR_ENABLED, v).apply()
+            _changes.tryEmit(Unit)
+        }
 
     var asrEnabled: Boolean
         get() = prefs.getBoolean(KEY_ASR_ENABLED, true)
-        set(v) = prefs.edit().putBoolean(KEY_ASR_ENABLED, v).apply()
+        set(v) {
+            prefs.edit().putBoolean(KEY_ASR_ENABLED, v).apply()
+            _changes.tryEmit(Unit)
+        }
 
     var maghribEnabled: Boolean
         get() = prefs.getBoolean(KEY_MAGHRIB_ENABLED, true)
-        set(v) = prefs.edit().putBoolean(KEY_MAGHRIB_ENABLED, v).apply()
+        set(v) {
+            prefs.edit().putBoolean(KEY_MAGHRIB_ENABLED, v).apply()
+            _changes.tryEmit(Unit)
+        }
 
     var ishaEnabled: Boolean
         get() = prefs.getBoolean(KEY_ISHA_ENABLED, true)
-        set(v) = prefs.edit().putBoolean(KEY_ISHA_ENABLED, v).apply()
+        set(v) {
+            prefs.edit().putBoolean(KEY_ISHA_ENABLED, v).apply()
+            _changes.tryEmit(Unit)
+        }
 
     var adhanSound: String?
         get() = prefs.getString("adhan_sound", null)
