@@ -40,50 +40,53 @@
         android:layout_marginTop="@dimen/_24sdp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/_16sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
         app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
         <TextView
             android:id="@+id/choice_subhan"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_3sdp"
             android:layout_weight="1"
             android:background="@drawable/bg_tasbeeh_chip_active"
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
-            android:paddingVertical="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:paddingHorizontal="@dimen/_10sdp"
             android:text="@string/subhanallah"
             android:textColor="@color/white"
-            android:textSize="@dimen/_11ssp" />
+            android:textSize="@dimen/_12ssp" />
 
         <TextView
             android:id="@+id/choice_alhamd"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_3sdp"
             android:layout_weight="1"
             android:background="@drawable/bg_tasbeeh_chip_inactive"
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
-            android:paddingVertical="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:paddingHorizontal="@dimen/_10sdp"
             android:text="@string/alhamdulillah"
             android:textColor="@color/black"
-            android:textSize="@dimen/_11ssp" />
+            android:textSize="@dimen/_12ssp" />
 
         <TextView
             android:id="@+id/choice_allahu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_3sdp"
             android:layout_weight="1"
             android:background="@drawable/bg_tasbeeh_chip_inactive"
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
-            android:paddingVertical="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:paddingHorizontal="@dimen/_10sdp"
             android:text="@string/allahuakbar"
             android:textColor="@color/black"
-            android:textSize="@dimen/_11ssp" />
+            android:textSize="@dimen/_12ssp" />
 
     </LinearLayout>
 
@@ -106,12 +109,13 @@
             android:clickable="false"
             android:focusable="false"
             app:indicatorColor="@color/gold"
+            app:indicatorSize="@dimen/_9ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:trackColor="@color/divider"
-            app:trackThickness="@dimen/_6sdp" />
+            app:trackThickness="@dimen/_10sdp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_tap_area"
@@ -161,33 +165,35 @@
         android:layout_marginBottom="@dimen/_32sdp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/_16sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
         app:layout_constraintBottom_toTopOf="@+id/btn_reset">
 
         <TextView
             android:id="@+id/pill_subhan"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_3sdp"
             android:layout_weight="1"
             android:background="@drawable/bg_tasbeeh_pill_active"
             android:fontFamily="@font/poppin_regular"
             android:gravity="center"
             android:paddingVertical="@dimen/_8sdp"
+            android:paddingHorizontal="@dimen/_10sdp"
             android:text="@string/pill_subhan_text"
             android:textColor="@color/black"
-            android:textSize="@dimen/_11ssp" />
+            android:textSize="@dimen/_10ssp" />
 
         <TextView
             android:id="@+id/pill_alhamd"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_3sdp"
             android:layout_weight="1"
             android:background="@drawable/bg_tasbeeh_pill_inactive"
             android:fontFamily="@font/poppin_regular"
             android:gravity="center"
             android:paddingVertical="@dimen/_8sdp"
+            android:paddingHorizontal="@dimen/_10sdp"
             android:text="@string/pill_alhamd_text"
             android:textColor="@color/section_title"
             android:textSize="@dimen/_10ssp" />
@@ -196,12 +202,13 @@
             android:id="@+id/pill_allahu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_3sdp"
             android:layout_weight="1"
             android:background="@drawable/bg_tasbeeh_pill_inactive"
             android:fontFamily="@font/poppin_regular"
             android:gravity="center"
             android:paddingVertical="@dimen/_8sdp"
+            android:paddingHorizontal="@dimen/_10sdp"
             android:text="@string/pill_allahu_text"
             android:textColor="@color/section_title"
             android:textSize="@dimen/_10ssp" />
