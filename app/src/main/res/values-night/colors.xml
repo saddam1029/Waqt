@@ -12,8 +12,8 @@
     <color name="text_muted">#99A19F</color>
     <color name="divider">#2A3330</color>
     <color name="section_title">#99A19F</color>
-    <color name="theme_icon_bg">#1AFFFFFF</color>
-    <color name="theme_icon_tint">#FFFFFF</color>
+    <color name="theme_icon_bg">#161E1B</color>
+    <color name="theme_icon_tint">#E0C097</color>
     <color name="circle_icon_bg">#1AFFFFFF</color>
     <color name="bottom_nav_bg">#1A2420</color>
 </resources>
