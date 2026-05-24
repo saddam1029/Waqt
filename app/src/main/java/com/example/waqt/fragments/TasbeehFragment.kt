@@ -13,13 +13,9 @@ import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.example.waqt.R
 import com.example.waqt.databinding.FragmentTasbeehBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class TasbeehFragment : Fragment() {
@@ -30,8 +26,6 @@ class TasbeehFragment : Fragment() {
     private var count = 0
     private val target = 33
     private var currentDhikrIndex = 0
-
-    private val prefs by lazy { com.example.waqt.prefs.PrayerPrefs(requireContext()) }
 
     private val dhikrNames = listOf(
         R.string.subhanallah,
@@ -49,8 +43,6 @@ class TasbeehFragment : Fragment() {
 
         setupChoices()
         updateUI()
-        setupThemeToggle()
-        observeThemeChanges()
 
         binding.cvTapArea.setOnClickListener {
             onTap()
@@ -62,41 +54,6 @@ class TasbeehFragment : Fragment() {
 
         binding.ivRefresh.setOnClickListener { resetAll() }
         binding.btnReset.setOnClickListener { resetAll() }
-    }
-
-    private fun setupThemeToggle() {
-        binding.ivTheme.setOnClickListener {
-            prefs.isDarkMode = !prefs.isDarkMode
-            updateTheme()
-        }
-        updateThemeIcon()
-    }
-
-    private fun observeThemeChanges() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                prefs.changes.collect {
-                    updateThemeIcon()
-                }
-            }
-        }
-    }
-
-    private fun updateThemeIcon() {
-        if (prefs.isDarkMode) {
-            binding.ivTheme.setImageResource(R.drawable.ic_sun)
-        } else {
-            binding.ivTheme.setImageResource(R.drawable.iv_theme_night)
-        }
-    }
-
-    private fun updateTheme() {
-        val mode = if (prefs.isDarkMode) {
-            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
-        } else {
-            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
-        }
-        androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(mode)
     }
 
     private fun setupChoices() {

@@ -35,23 +35,9 @@
             android:padding="@dimen/_6sdp"
             android:src="@drawable/ic_refresh"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/iv_theme"
-            android:layout_marginEnd="@dimen/_8sdp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/text_secondary" />
-
-        <ImageView
-            android:id="@+id/iv_theme"
-            android:layout_width="@dimen/_28sdp"
-            android:layout_height="@dimen/_28sdp"
-            android:background="@drawable/bg_theme"
-            android:contentDescription="@string/nav_settings"
-            android:padding="@dimen/_5sdp"
-            android:src="@drawable/iv_theme_night"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/theme_icon_tint" />
+            app:tint="@color/text_secondary" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

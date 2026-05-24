@@ -69,32 +69,6 @@ class SettingsFragment : Fragment() {
         updatePermissionStatus()
         setupSoundSelection()
         observeSettingsChanges()
-        setupThemeToggle()
-    }
-
-    private fun setupThemeToggle() {
-        binding.ivTheme.setOnClickListener {
-            prefs.isDarkMode = !prefs.isDarkMode
-            updateTheme()
-        }
-        updateThemeIcon()
-    }
-
-    private fun updateThemeIcon() {
-        if (prefs.isDarkMode) {
-            binding.ivTheme.setImageResource(R.drawable.ic_sun)
-        } else {
-            binding.ivTheme.setImageResource(R.drawable.iv_theme_night)
-        }
-    }
-
-    private fun updateTheme() {
-        val mode = if (prefs.isDarkMode) {
-            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
-        } else {
-            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
-        }
-        androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(mode)
     }
 
     private fun setupSoundSelection() {
@@ -130,6 +104,15 @@ class SettingsFragment : Fragment() {
             binding.tvPermissions.setTextColor(ContextCompat.getColor(requireContext(), R.color.badge_text_error))
             binding.tvPermissions.setBackgroundResource(R.drawable.bg_badge_error)
         }
+    }
+
+    private fun updateTheme() {
+        val mode = if (prefs.isDarkMode) {
+            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+        } else {
+            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+        }
+        androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(mode)
     }
 
     private fun setupSwitches() {

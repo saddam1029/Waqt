@@ -55,7 +55,7 @@ class HomeFragment : Fragment() {
 
     private fun updateThemeIcon() {
         if (prefs.isDarkMode) {
-            binding.ivTheme.setImageResource(R.drawable.ic_sun)
+            binding.ivTheme.setImageResource(R.drawable.iv_dhuhr_icon)
         } else {
             binding.ivTheme.setImageResource(R.drawable.iv_theme_night)
         }
