@@ -4,7 +4,7 @@
     <!-- Selected -->
     <item
         android:state_checked="true"
-        android:color="@color/primary_green" />
+        android:color="@color/primary_green_themed" />
 
     <!-- Unselected -->
     <item

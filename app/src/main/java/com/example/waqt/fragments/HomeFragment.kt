@@ -42,6 +42,32 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         setupSwitchListeners()
+        setupThemeToggle()
+        updateThemeIcon()
+    }
+
+    private fun setupThemeToggle() {
+        binding.ivTheme.setOnClickListener {
+            prefs.isDarkMode = !prefs.isDarkMode
+            updateTheme()
+        }
+    }
+
+    private fun updateThemeIcon() {
+        if (prefs.isDarkMode) {
+            binding.ivTheme.setImageResource(R.drawable.ic_sun)
+        } else {
+            binding.ivTheme.setImageResource(R.drawable.iv_theme_night)
+        }
+    }
+
+    private fun updateTheme() {
+        val mode = if (prefs.isDarkMode) {
+            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+        } else {
+            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+        }
+        androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(mode)
     }
 
     private fun setupSwitchListeners() {
@@ -79,6 +105,7 @@ class HomeFragment : Fragment() {
                     prefs.changes.collect {
                         viewModel.refreshTimes()
                         updatePrayerListStatus(viewModel.prayerTimes.value)
+                        updateThemeIcon()
                     }
                 }
             }

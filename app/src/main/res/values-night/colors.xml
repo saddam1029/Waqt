@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FFFFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="main_bg">#0C1210</color>
+    <color name="primary_green_themed">#3D6B60</color>
+    <color name="card_bg">#161E1B</color>
+    <color name="text_dark">#99A19F</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#99A19F</color>
+    <color name="primary">@color/primary_green_themed</color>
+    <color name="text_muted">#99A19F</color>
+    <color name="divider">#2A3330</color>
+    <color name="section_title">#99A19F</color>
+    <color name="theme_icon_bg">#1AFFFFFF</color>
+    <color name="theme_icon_tint">#FFFFFF</color>
+    <color name="circle_icon_bg">#1AFFFFFF</color>
+    <color name="bottom_nav_bg">#1A2420</color>
+</resources>

@@ -29,7 +29,15 @@ class PrayerPrefs(context: Context) {
         const val DEFAULT_ASR = "16:15"
         const val DEFAULT_MAGHRIB = "18:48"
         const val DEFAULT_ISHA = "20:30"
+        const val KEY_DARK_MODE = "dark_mode"
     }
+
+    var isDarkMode: Boolean
+        get() = prefs.getBoolean(KEY_DARK_MODE, false)
+        set(v) {
+            prefs.edit().putBoolean(KEY_DARK_MODE, v).apply()
+            _changes.tryEmit(Unit)
+        }
 
     var fajr: String
         get() = prefs.getString(KEY_FAJR, DEFAULT_FAJR) ?: DEFAULT_FAJR

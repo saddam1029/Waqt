@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.waqt.R
 import com.example.waqt.alarm.AlarmScheduler
 import com.example.waqt.databinding.FragmentSetTimesBinding
@@ -13,6 +16,7 @@ import com.example.waqt.prefs.PrayerPrefs
 import com.example.waqt.utils.TimeUtils.formatTo12Hour
 import com.example.waqt.utils.TimeUtils.parseTime
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -42,6 +46,8 @@ class SetTimesFragment : Fragment() {
 
         loadSavedTimes()
         updateTimeViews()
+        setupThemeToggle()
+        observeThemeChanges()
 
         binding.ivBack.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
@@ -52,6 +58,41 @@ class SetTimesFragment : Fragment() {
         binding.btnSave.setOnClickListener {
             saveAndSchedule()
         }
+    }
+
+    private fun setupThemeToggle() {
+        binding.ivTheme.setOnClickListener {
+            prefs.isDarkMode = !prefs.isDarkMode
+            updateTheme()
+        }
+        updateThemeIcon()
+    }
+
+    private fun observeThemeChanges() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                prefs.changes.collect {
+                    updateThemeIcon()
+                }
+            }
+        }
+    }
+
+    private fun updateThemeIcon() {
+        if (prefs.isDarkMode) {
+            binding.ivTheme.setImageResource(R.drawable.ic_sun)
+        } else {
+            binding.ivTheme.setImageResource(R.drawable.iv_theme_night)
+        }
+    }
+
+    private fun updateTheme() {
+        val mode = if (prefs.isDarkMode) {
+            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+        } else {
+            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+        }
+        androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(mode)
     }
 
     private fun loadSavedTimes() {
@@ -102,7 +143,7 @@ class SetTimesFragment : Fragment() {
             dhuhr = times["dhuhr"]!!,
             asr = times["asr"]!!,
             maghrib = times["maghrib"]!!,
-            isha = times["isha"]!!
+            isha = times["isha"]!!,
         )
 
         AlarmScheduler.scheduleAll(requireContext(), times)

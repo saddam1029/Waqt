@@ -6,8 +6,11 @@
     <color name="gold">#E0C097</color>
     <color name="main_bg">#F7F4EF</color>
     <color name="primary_green">#2D5A4C</color>
+    <color name="primary_green_themed">#2D5A4C</color>
     <color name="card_bg">#FFFFFF</color>
     <color name="text_dark">#333333</color>
+    <color name="text_primary">#000000</color>
+    <color name="text_secondary">#8E8E93</color>
     <color name="primary">@color/primary_green</color>
     <color name="text_muted">#6E6E73</color>
     <color name="divider">#EBEBEB</color>
@@ -16,4 +19,8 @@
     <color name="badge_text">#4CAF50</color>
     <color name="badge_bg_error">#FFEBEE</color>
     <color name="badge_text_error">#F44336</color>
+    <color name="theme_icon_bg">#FFFFFF</color>
+    <color name="theme_icon_tint">#333333</color>
+    <color name="circle_icon_bg">#F0F0F0</color>
+    <color name="bottom_nav_bg">#FFFFFF</color>
 </resources>

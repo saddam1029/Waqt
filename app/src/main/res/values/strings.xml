@@ -40,6 +40,7 @@
     <string name="alhamdulillah">ٱلْحَمْدُ لِلَّٰهِ</string>
     <string name="allahuakbar">اللّٰهُ أَكْبَرُ</string>
     <string name="reset">Reset</string>
+    <string name="zero">0</string>
     <string name="dhikr_format">%1$d × %2$s</string>
     <string name="dhikr_subhan_full">33 × سُبْحَانَ ٱللَّٰهِ</string>
     <string name="pill_subhan_text">33 سُبْحَانَ ٱللَّٰهِ</string>

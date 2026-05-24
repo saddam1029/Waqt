@@ -11,7 +11,8 @@
         android:id="@+id/cl_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_16sdp"
+        android:paddingVertical="@dimen/_8sdp"
+        android:paddingHorizontal="@dimen/_16sdp"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -23,7 +24,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/black" />
+            app:tint="@color/text_primary" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -32,11 +33,24 @@
             android:layout_marginStart="@dimen/_16sdp"
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/set_prayer_times"
-            android:textColor="@color/black"
+            android:textColor="@color/text_primary"
             android:textSize="@dimen/_20ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_back"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_theme"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:background="@drawable/bg_theme"
+            android:contentDescription="@string/nav_settings"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/iv_theme_night"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/theme_icon_tint" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -60,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_12sdp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="@color/card_bg"
                 app:cardCornerRadius="@dimen/_12sdp"
                 app:cardElevation="@dimen/_2sdp"
                 app:strokeWidth="0dp">
@@ -75,6 +89,7 @@
                         android:layout_width="@dimen/_36sdp"
                         android:layout_height="@dimen/_36sdp"
                         android:background="@drawable/bg_circle_light"
+                        android:contentDescription="@string/fajr"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/iv_fajr_icon"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -87,8 +102,8 @@
                         android:layout_marginStart="@dimen/_16sdp"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/fajr"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_15ssp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/_18ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/iv_fajr"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -99,9 +114,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_12sdp"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="04:32 AM"
-                        android:textColor="#3D6B60"
-                        android:textSize="@dimen/_13ssp"
+                        tools:text="04:32 AM"
+                        android:textColor="@color/primary_green_themed"
+                        android:textSize="@dimen/_16ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/iv_fajr_arrow"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -115,7 +130,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="#6E6E73" />
+                        app:tint="@color/text_secondary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -126,7 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_12sdp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="@color/card_bg"
                 app:cardCornerRadius="@dimen/_12sdp"
                 app:cardElevation="@dimen/_2sdp"
                 app:strokeWidth="0dp">
@@ -141,6 +156,7 @@
                         android:layout_width="@dimen/_36sdp"
                         android:layout_height="@dimen/_36sdp"
                         android:background="@drawable/bg_circle_light"
+                        android:contentDescription="@string/dhuhr"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/iv_dhuhr_icon"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -153,8 +169,8 @@
                         android:layout_marginStart="@dimen/_16sdp"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/dhuhr"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_15ssp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/_18ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/iv_dhuhr"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -165,9 +181,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_12sdp"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="12:15 PM"
-                        android:textColor="#3D6B60"
-                        android:textSize="@dimen/_13ssp"
+                        tools:text="12:15 PM"
+                        android:textColor="@color/primary_green_themed"
+                        android:textSize="@dimen/_16ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/iv_dhuhr_arrow"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -181,7 +197,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="#6E6E73" />
+                        app:tint="@color/text_secondary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -192,7 +208,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_12sdp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="@color/card_bg"
                 app:cardCornerRadius="@dimen/_12sdp"
                 app:cardElevation="@dimen/_2sdp"
                 app:strokeWidth="0dp">
@@ -207,6 +223,7 @@
                         android:layout_width="@dimen/_36sdp"
                         android:layout_height="@dimen/_36sdp"
                         android:background="@drawable/bg_circle_light"
+                        android:contentDescription="@string/asr"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/iv_dhuhr_icon"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -219,8 +236,8 @@
                         android:layout_marginStart="@dimen/_16sdp"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/asr"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_15ssp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/_18ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/iv_asr"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -231,9 +248,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_12sdp"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="04:15 PM"
-                        android:textColor="#3D6B60"
-                        android:textSize="@dimen/_13ssp"
+                        tools:text="04:15 PM"
+                        android:textColor="@color/primary_green_themed"
+                        android:textSize="@dimen/_16ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/iv_asr_arrow"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -247,7 +264,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="#6E6E73" />
+                        app:tint="@color/text_secondary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -258,7 +275,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_12sdp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="@color/card_bg"
                 app:cardCornerRadius="@dimen/_12sdp"
                 app:cardElevation="@dimen/_2sdp"
                 app:strokeWidth="0dp">
@@ -273,6 +290,7 @@
                         android:layout_width="@dimen/_36sdp"
                         android:layout_height="@dimen/_36sdp"
                         android:background="@drawable/bg_circle_light"
+                        android:contentDescription="@string/maghrib"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/iv_maghrib_icon"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -285,8 +303,8 @@
                         android:layout_marginStart="@dimen/_16sdp"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/maghrib"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_15ssp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/_18ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/iv_maghrib"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -297,9 +315,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_12sdp"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="06:48 PM"
-                        android:textColor="#3D6B60"
-                        android:textSize="@dimen/_13ssp"
+                        tools:text="06:48 PM"
+                        android:textColor="@color/primary_green_themed"
+                        android:textSize="@dimen/_16ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/iv_maghrib_arrow"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -313,7 +331,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="#6E6E73" />
+                        app:tint="@color/text_secondary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -324,7 +342,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_12sdp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="@color/card_bg"
                 app:cardCornerRadius="@dimen/_12sdp"
                 app:cardElevation="@dimen/_2sdp"
                 app:strokeWidth="0dp">
@@ -339,6 +357,7 @@
                         android:layout_width="@dimen/_36sdp"
                         android:layout_height="@dimen/_36sdp"
                         android:background="@drawable/bg_circle_light"
+                        android:contentDescription="@string/isha"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/iv_isha_icon"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -351,8 +370,8 @@
                         android:layout_marginStart="@dimen/_16sdp"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/isha"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_15ssp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/_18ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/iv_isha"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -363,9 +382,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_12sdp"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="08:30 PM"
-                        android:textColor="#3D6B60"
-                        android:textSize="@dimen/_13ssp"
+                        tools:text="08:30 PM"
+                        android:textColor="@color/primary_green_themed"
+                        android:textSize="@dimen/_16ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/iv_isha_arrow"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -379,7 +398,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="#6E6E73" />
+                        app:tint="@color/text_secondary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -399,6 +418,7 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/_18ssp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:backgroundTint="@color/primary_green_themed" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

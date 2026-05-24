@@ -13,9 +13,15 @@ import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.waqt.R
 import com.example.waqt.databinding.FragmentTasbeehBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class TasbeehFragment : Fragment() {
 
     private var _binding: FragmentTasbeehBinding? = null
@@ -25,10 +31,12 @@ class TasbeehFragment : Fragment() {
     private val target = 33
     private var currentDhikrIndex = 0
 
+    private val prefs by lazy { com.example.waqt.prefs.PrayerPrefs(requireContext()) }
+
     private val dhikrNames = listOf(
         R.string.subhanallah,
         R.string.alhamdulillah,
-        R.string.allahuakbar
+        R.string.allahuakbar,
     )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -41,6 +49,8 @@ class TasbeehFragment : Fragment() {
 
         setupChoices()
         updateUI()
+        setupThemeToggle()
+        observeThemeChanges()
 
         binding.cvTapArea.setOnClickListener {
             onTap()
@@ -52,6 +62,41 @@ class TasbeehFragment : Fragment() {
 
         binding.ivRefresh.setOnClickListener { resetAll() }
         binding.btnReset.setOnClickListener { resetAll() }
+    }
+
+    private fun setupThemeToggle() {
+        binding.ivTheme.setOnClickListener {
+            prefs.isDarkMode = !prefs.isDarkMode
+            updateTheme()
+        }
+        updateThemeIcon()
+    }
+
+    private fun observeThemeChanges() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                prefs.changes.collect {
+                    updateThemeIcon()
+                }
+            }
+        }
+    }
+
+    private fun updateThemeIcon() {
+        if (prefs.isDarkMode) {
+            binding.ivTheme.setImageResource(R.drawable.ic_sun)
+        } else {
+            binding.ivTheme.setImageResource(R.drawable.iv_theme_night)
+        }
+    }
+
+    private fun updateTheme() {
+        val mode = if (prefs.isDarkMode) {
+            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+        } else {
+            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+        }
+        androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(mode)
     }
 
     private fun setupChoices() {
@@ -150,22 +195,25 @@ class TasbeehFragment : Fragment() {
         vibrateMilestone()
         
         // Brief delay before moving to next dhikr
-        binding.root.postDelayed({
-            if (currentDhikrIndex < dhikrNames.size - 1) {
-                currentDhikrIndex++
-                count = 0
-                updateUI()
-            } else {
-                // All finished? optionally reset or stay at 33
-            }
-        }, 500)
+        binding.root.postDelayed(
+            {
+                if (currentDhikrIndex < (dhikrNames.size - 1)) {
+                    currentDhikrIndex++
+                    count = 0
+                    updateUI()
+                } else {
+                    // All finished? optionally reset or stay at 33
+                }
+            },
+            500,
+        )
     }
 
     private fun updateChoiceSelectionUI() {
         val activeBg = ContextCompat.getDrawable(requireContext(), R.drawable.bg_tasbeeh_chip_active)
         val inactiveBg = ContextCompat.getDrawable(requireContext(), R.drawable.bg_tasbeeh_chip_inactive)
         val activeColor = ContextCompat.getColor(requireContext(), R.color.white)
-        val inactiveColor = ContextCompat.getColor(requireContext(), R.color.black)
+        val inactiveColor = ContextCompat.getColor(requireContext(), R.color.text_primary)
 
         val choices = listOf(binding.choiceSubhan, binding.choiceAlhamd, binding.choiceAllahu)
         choices.forEachIndexed { i, textView ->
@@ -178,8 +226,8 @@ class TasbeehFragment : Fragment() {
     private fun updateMilestonePills() {
         val activeBg = ContextCompat.getDrawable(requireContext(), R.drawable.bg_tasbeeh_pill_active)
         val inactiveBg = ContextCompat.getDrawable(requireContext(), R.drawable.bg_tasbeeh_pill_inactive)
-        val activeColor = ContextCompat.getColor(requireContext(), R.color.black)
-        val inactiveColor = ContextCompat.getColor(requireContext(), R.color.section_title)
+        val activeColor = ContextCompat.getColor(requireContext(), R.color.text_primary)
+        val inactiveColor = ContextCompat.getColor(requireContext(), R.color.text_secondary)
 
         val pills = listOf(binding.pillSubhan, binding.pillAlhamd, binding.pillAllahu)
         pills.forEachIndexed { i, textView ->

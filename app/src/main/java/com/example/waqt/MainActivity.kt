@@ -24,14 +24,14 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val homeFragment = HomeFragment()
-    private val setTimesFragment = SetTimesFragment()
-    private val tasbeehFragment = TasbeehFragment()
-    private val settingsFragment = SettingsFragment()
+    private var homeFragment = HomeFragment()
+    private var setTimesFragment = SetTimesFragment()
+    private var tasbeehFragment = TasbeehFragment()
+    private var settingsFragment = SettingsFragment()
     private var activeFragment: Fragment = homeFragment
 
     private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
+        ActivityResultContracts.RequestPermission(),
     ) { _ ->
         // Permission result handled by system
     }
@@ -46,8 +46,24 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        setupNavigation()
+        if (savedInstanceState == null) {
+            setupNavigation()
+        } else {
+            restoreNavigation()
+        }
+        
         checkAndRequestPermissions()
+        applyInitialTheme()
+    }
+
+    private fun applyInitialTheme() {
+        val prefs = com.example.waqt.prefs.PrayerPrefs(this)
+        val mode = if (prefs.isDarkMode) {
+            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+        } else {
+            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+        }
+        androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(mode)
     }
 
     private fun setupNavigation() {
@@ -61,6 +77,30 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
 
+        setupBottomNavListeners(bottomNav)
+    }
+
+    private fun restoreNavigation() {
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        
+        homeFragment = (supportFragmentManager.findFragmentByTag("home") as? HomeFragment) ?: HomeFragment()
+        setTimesFragment = supportFragmentManager.findFragmentByTag("setTimes") as? SetTimesFragment ?: SetTimesFragment()
+        tasbeehFragment = supportFragmentManager.findFragmentByTag("tasbeeh") as? TasbeehFragment ?: TasbeehFragment()
+        settingsFragment = supportFragmentManager.findFragmentByTag("settings") as? SettingsFragment ?: SettingsFragment()
+        
+        val activeTag = when (bottomNav.selectedItemId) {
+            R.id.navigation_home -> "home"
+            R.id.navigation_set_times -> "setTimes"
+            R.id.navigation_tasbeeh -> "tasbeeh"
+            R.id.navigation_settings -> "settings"
+            else -> "home"
+        }
+        activeFragment = supportFragmentManager.findFragmentByTag(activeTag) ?: homeFragment
+        
+        setupBottomNavListeners(bottomNav)
+    }
+
+    private fun setupBottomNavListeners(bottomNav: BottomNavigationView) {
         bottomNav.setOnItemSelectedListener { item ->
             val target = when (item.itemId) {
                 R.id.navigation_home -> homeFragment
@@ -107,8 +147,7 @@ class MainActivity : AppCompatActivity() {
         for (i in 0 until menuView.childCount) {
             val itemView = menuView.getChildAt(i)
             if (itemView.id == itemId) {
-                // Try to find the icon view, fallback to the item view itself
-                val icon = itemView.findViewById<View>(com.google.android.material.R.id.navigation_bar_item_icon_view)
+                val icon = itemView.findViewById(com.google.android.material.R.id.navigation_bar_item_icon_view)
                     ?: itemView
 
                 icon.animate()

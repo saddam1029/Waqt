@@ -22,7 +22,7 @@
     </style>
 
     <style name="SettingsCardStyle">
-        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardBackgroundColor">@color/card_bg</item>
         <item name="cardCornerRadius">@dimen/_12sdp</item>
         <item name="cardElevation">@dimen/_2sdp</item>
         <item name="strokeWidth">0dp</item>

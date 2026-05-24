@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -20,8 +21,10 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.waqt.R
 import com.example.waqt.databinding.FragmentSettingsBinding
 import com.example.waqt.prefs.PrayerPrefs
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
@@ -30,7 +33,7 @@ class SettingsFragment : Fragment() {
     private var isUpdatingUi = false
 
     private val soundPickerLauncher = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
+        ActivityResultContracts.StartActivityForResult(),
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val uri: Uri? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -66,6 +69,32 @@ class SettingsFragment : Fragment() {
         updatePermissionStatus()
         setupSoundSelection()
         observeSettingsChanges()
+        setupThemeToggle()
+    }
+
+    private fun setupThemeToggle() {
+        binding.ivTheme.setOnClickListener {
+            prefs.isDarkMode = !prefs.isDarkMode
+            updateTheme()
+        }
+        updateThemeIcon()
+    }
+
+    private fun updateThemeIcon() {
+        if (prefs.isDarkMode) {
+            binding.ivTheme.setImageResource(R.drawable.ic_sun)
+        } else {
+            binding.ivTheme.setImageResource(R.drawable.iv_theme_night)
+        }
+    }
+
+    private fun updateTheme() {
+        val mode = if (prefs.isDarkMode) {
+            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+        } else {
+            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+        }
+        androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(mode)
     }
 
     private fun setupSoundSelection() {
@@ -74,7 +103,7 @@ class SettingsFragment : Fragment() {
             val intent = Intent(RingtoneManager.ACTION_RINGTONE_PICKER).apply {
                 putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION)
                 putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, getString(R.string.adhan_sound))
-                putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, prefs.adhanSound?.let { Uri.parse(it) })
+                putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, prefs.adhanSound?.toUri())
                 putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true)
                 putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, true)
             }
@@ -104,6 +133,12 @@ class SettingsFragment : Fragment() {
     }
 
     private fun setupSwitches() {
+        binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
+            if (!isUpdatingUi) {
+                prefs.isDarkMode = isChecked
+                updateTheme()
+            }
+        }
         binding.switchFajr.setOnCheckedChangeListener { _, isChecked ->
             if (!isUpdatingUi) prefs.fajrEnabled = isChecked
         }
@@ -135,6 +170,7 @@ class SettingsFragment : Fragment() {
 
     private fun updateSwitchesFromPrefs() {
         isUpdatingUi = true
+        binding.switchDarkMode.isChecked = prefs.isDarkMode
         binding.switchFajr.isChecked = prefs.fajrEnabled
         binding.switchDhuhr.isChecked = prefs.dhuhrEnabled
         binding.switchAsr.isChecked = prefs.asrEnabled

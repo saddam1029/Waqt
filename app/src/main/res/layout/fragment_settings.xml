@@ -1,30 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_bg">
 
-    <TextView
-        android:id="@+id/tv_settings_title"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="@string/nav_settings"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_20ssp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:paddingHorizontal="@dimen/_16sdp"
+        android:paddingVertical="@dimen/_8sdp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_settings_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/nav_settings"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_theme"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:background="@drawable/bg_theme"
+            android:contentDescription="@string/nav_settings"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/iv_theme_night"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/theme_icon_tint" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_16sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_settings_title">
+        app:layout_constraintTop_toBottomOf="@+id/cl_header">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,14 +74,14 @@
 
                     <ImageView
                         android:id="@+id/iv_dark_mode"
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="@dimen/_20sdp"
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
                         android:src="@drawable/iv_theme_night"
                         android:contentDescription="@null"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="#2D5A4C" />
+                        app:tint="@color/primary_green_themed" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -67,7 +89,7 @@
                         android:layout_marginStart="@dimen/_12sdp"
                         android:fontFamily="@font/poppins_medium"
                         android:text="@string/dark_mode"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text_primary"
                         android:textSize="@dimen/_12ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/iv_dark_mode"
@@ -78,7 +100,7 @@
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_25sdp"
                         app:sb_checked="true"
-                        app:sb_checked_color="#3D6B60"
+                        app:sb_checked_color="@color/primary_green_themed"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -112,14 +134,14 @@
 
                         <ImageView
                             android:id="@+id/iv_notif_perm"
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
                             android:src="@drawable/ic_notification"
                             android:contentDescription="@null"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:tint="#2D5A4C" />
+                            app:tint="@color/primary_green_themed" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -127,7 +149,7 @@
                             android:layout_marginStart="@dimen/_12sdp"
                             android:fontFamily="@font/poppins_medium"
                             android:text="@string/notification_permission"
-                            android:textColor="@color/black"
+                            android:textColor="@color/text_primary"
                             android:textSize="@dimen/_12ssp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/iv_notif_perm"
@@ -165,14 +187,14 @@
 
                         <ImageView
                             android:id="@+id/iv_adhan"
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
                             android:src="@drawable/ic_adhan"
                             android:contentDescription="@null"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:tint="#2D5A4C" />
+                            app:tint="@color/primary_green_themed" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -188,7 +210,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins_medium"
                                 android:text="@string/adhan_sound"
-                                android:textColor="@color/black"
+                                android:textColor="@color/text_primary"
                                 android:textSize="@dimen/_12ssp" />
 
                             <TextView
@@ -196,7 +218,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/makkah_adhan"
-                                android:textColor="@color/section_title"
+                                android:textColor="@color/text_secondary"
                                 android:textSize="@dimen/_10ssp" />
                         </LinearLayout>
 
@@ -208,7 +230,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:tint="@color/section_title" />
+                            app:tint="@color/text_secondary" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -242,6 +264,7 @@
                         <TextView
                             style="@style/PrayerAlarmItemText"
                             android:text="@string/fajr"
+                            android:textColor="@color/text_primary"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -251,7 +274,7 @@
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_25sdp"
                             app:sb_checked="true"
-                            app:sb_checked_color="#3D6B60"
+                            app:sb_checked_color="@color/primary_green_themed"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -268,6 +291,7 @@
                         <TextView
                             style="@style/PrayerAlarmItemText"
                             android:text="@string/dhuhr"
+                            android:textColor="@color/text_primary"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -277,7 +301,7 @@
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_25sdp"
                             app:sb_checked="true"
-                            app:sb_checked_color="#3D6B60"
+                            app:sb_checked_color="@color/primary_green_themed"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -294,6 +318,7 @@
                         <TextView
                             style="@style/PrayerAlarmItemText"
                             android:text="@string/asr"
+                            android:textColor="@color/text_primary"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -303,7 +328,7 @@
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_25sdp"
                             app:sb_checked="true"
-                            app:sb_checked_color="#3D6B60"
+                            app:sb_checked_color="@color/primary_green_themed"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -320,6 +345,7 @@
                         <TextView
                             style="@style/PrayerAlarmItemText"
                             android:text="@string/maghrib"
+                            android:textColor="@color/text_primary"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -329,7 +355,7 @@
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_25sdp"
                             app:sb_checked="true"
-                            app:sb_checked_color="#3D6B60"
+                            app:sb_checked_color="@color/primary_green_themed"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -346,6 +372,7 @@
                         <TextView
                             style="@style/PrayerAlarmItemText"
                             android:text="@string/isha"
+                            android:textColor="@color/text_primary"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -355,7 +382,7 @@
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_25sdp"
                             app:sb_checked="true"
-                            app:sb_checked_color="#3D6B60"
+                            app:sb_checked_color="@color/primary_green_themed"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -384,14 +411,14 @@
 
                     <ImageView
                         android:id="@+id/iv_about"
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="@dimen/_20sdp"
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
                         android:src="@drawable/ic_about"
                         android:contentDescription="@null"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="#2D5A4C" />
+                        app:tint="@color/primary_green_themed" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -399,7 +426,7 @@
                         android:layout_marginStart="@dimen/_12sdp"
                         android:fontFamily="@font/poppins_medium"
                         android:text="@string/about_waqt"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text_primary"
                         android:textSize="@dimen/_12ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/iv_about"
@@ -413,7 +440,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/section_title" />
+                        app:tint="@color/text_secondary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
