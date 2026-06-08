@@ -28,24 +28,35 @@ A clean, modern, and minimal Android app for Muslims to set and get notified for
 
 ## Screenshots
 
-<div align="center">
-
-<img src="assets/screens.png" alt="Waqt App Screens" width="100%"/>
-
-</div>
+### Light Theme
 
 <div align="center">
 
-| Home Screen | Set Prayer Times | Tasbeeh Counter |
-|:-----------:|:----------------:|:---------------:|
-| <img src="assets/screen_home.png" width="200"/> | <img src="assets/screen_set_times.png" width="200"/> | <img src="assets/screen_tasbeeh.png" width="200"/> |
+| Home | Prayer Times | Tasbeeh |
+|:----:|:------------:|:-------:|
+| <img src="assets/light_home.png" width="200"/> | <img src="assets/light_prayer.png" width="200"/> | <img src="assets/light_tasbeeh.png" width="200"/> |
 
-| Daily Dhikr | Settings | Dark Mode |
-|:-----------:|:--------:|:---------:|
-| <img src="assets/screen_dhikr.png" width="200"/> | <img src="assets/screen_settings.png" width="200"/> | <img src="assets/screen_dark.png" width="200"/> |
+| Daily Dhikr | Settings |
+|:-----------:|:--------:|
+| <img src="assets/light_dhiker.png" width="200"/> | <img src="assets/light_setting.png" width="200"/> |
 
 </div>
 
+---
+
+### Dark Theme
+
+<div align="center">
+
+| Home | Prayer Times | Tasbeeh |
+|:----:|:------------:|:-------:|
+| <img src="assets/dark_home.png" width="200"/> | <img src="assets/dark_prayer.png" width="200"/> | <img src="assets/dark_tasbeeh.png" width="200"/> |
+
+| Daily Dhikr | Settings |
+|:-----------:|:--------:|
+| <img src="assets/dark_dhiker.png" width="200"/> | <img src="assets/dark_setting.png" width="200"/> |
+
+</div>
 ---
 
 ## Features
