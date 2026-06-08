@@ -1,9 +1,11 @@
 <div align="center">
 
+<div align="center">
+<img src=app/src/main/res/drawable/banner.png" alt="Waqt Banner" width="100%"/>
+<br/>
 <p align="center">
   <img src="app/src/main/res/drawable/waqt.png" width="150"/>
 </p>
-<img src="assets/app_icon.png" alt="Waqt App Icon" width="100dp"/>
 
 # وقت — Waqt
 ### Prayer Time Reminder App
