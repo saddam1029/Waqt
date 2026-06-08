@@ -30,33 +30,23 @@ A clean, modern, and minimal Android app for Muslims to set and get notified for
 
 ### Light Theme
 
-<div align="center">
-
 | Home | Prayer Times | Tasbeeh |
 |:----:|:------------:|:-------:|
-| <img src="assets/light_home.png" width="200"/> | <img src="assets/light_prayer.png" width="200"/> | <img src="assets/light_tasbeeh.png" width="200"/> |
+| <img src="app/src/main/res/drawable/light_home.png" width="200"/> | <img src="app/src/main/res/drawable/light_prayer.png" width="200"/> | <img src="app/src/main/res/drawable/light_tasbeeh.png" width="200"/> |
 
 | Daily Dhikr | Settings |
 |:-----------:|:--------:|
-| <img src="assets/light_dhiker.png" width="200"/> | <img src="assets/light_setting.png" width="200"/> |
-
-</div>
-
----
+| <img src="app/src/main/res/drawable/light_dhiker.png" width="200"/> | <img src="app/src/main/res/drawable/light_setting.png" width="200"/> |
 
 ### Dark Theme
 
-<div align="center">
-
 | Home | Prayer Times | Tasbeeh |
 |:----:|:------------:|:-------:|
-| <img src="assets/dark_home.png" width="200"/> | <img src="assets/dark_prayer.png" width="200"/> | <img src="assets/dark_tasbeeh.png" width="200"/> |
+| <img src="app/src/main/res/drawable/dark_home.png" width="200"/> | <img src="app/src/main/res/drawable/dark_prayer.png" width="200"/> | <img src="app/src/main/res/drawable/dark_tasbeeh.png" width="200"/> |
 
 | Daily Dhikr | Settings |
 |:-----------:|:--------:|
-| <img src="assets/dark_dhiker.png" width="200"/> | <img src="assets/dark_setting.png" width="200"/> |
-
-</div>
+| <img src="app/src/main/res/drawable/dark_dhiker.png" width="200"/> | <img src="app/src/main/res/drawable/dark_setting.png" width="200"/> |
 ---
 
 ## Features
