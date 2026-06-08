@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="images/logo.png" width="150"/>
-<br/>
-
+<p align="center">
+  <img src="images/logo.png" width="150"/>
+</p>
 <img src="assets/app_icon.png" alt="Waqt App Icon" width="100dp"/>
 
 # وقت — Waqt
