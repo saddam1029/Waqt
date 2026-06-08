@@ -42,7 +42,7 @@ A clean, modern, and minimal Android app for Muslims to set and get notified for
 
 | Home | Prayer Times | Tasbeeh |
 |:----:|:------------:|:-------:|
-| <img src="app/src/main/res/drawable/dark_home.png" width="200"/> | <img src="app/src/main/res/drawable/dark_prayer.png" width="200"/> | <img src="app/src/main/res/drawable/dark_tasbeeh.png" width="200"/> |
+| <img src="app/src/main/res/drawable/dark_home.jpeg" width="200"/> | <img src="app/src/main/res/drawable/dark_prayer.png" width="200"/> | <img src="app/src/main/res/drawable/dark_tasbeeh.png" width="200"/> |
 
 | Daily Dhikr | Settings |
 |:-----------:|:--------:|
