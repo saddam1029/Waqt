@@ -1,7 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.png" alt="Waqt Banner" width="100%"/>
-
+<img src="images/logo.png" width="150"/>
 <br/>
 
 <img src="assets/app_icon.png" alt="Waqt App Icon" width="100dp"/>
