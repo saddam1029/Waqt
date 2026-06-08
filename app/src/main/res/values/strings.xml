@@ -46,4 +46,6 @@
     <string name="pill_subhan_text">33 سُبْحَانَ ٱللَّٰهِ</string>
     <string name="pill_alhamd_text">33 ٱلْحَمْدُ لِلَّٰهِ</string>
     <string name="pill_allahu_text">33 اللّٰهُ أَكْبَرُ</string>
+    <string name="daily_dhikr">Daily Dhikr</string>
+    <string name="close">Close</string>
 </resources>

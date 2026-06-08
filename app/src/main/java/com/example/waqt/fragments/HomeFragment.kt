@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -44,6 +46,46 @@ class HomeFragment : Fragment() {
         setupSwitchListeners()
         setupThemeToggle()
         updateThemeIcon()
+
+        if (!hasShownDhikrThisSession) {
+            showDailyDhikrDialog()
+            hasShownDhikrThisSession = true
+        }
+    }
+
+    private fun showDailyDhikrDialog() {
+        val dhikrs = listOf(
+            "ٱلْحَمْدُ لِلَّٰهِ",
+            "سُبْحَانَ ٱللَّٰهِ",
+            "ٱللَّٰهُ أَكْبَرُ",
+            "لَا إِلَٰهَ إِلَّا ٱللَّٰهُ",
+            "أَسْتَغْفِرُ ٱللَّٰهَ",
+            "سُبْحَانَ ٱللَّٰهِ وَبِحَمْدِهِ",
+            "حَسْبُنَا ٱللَّٰهُ وَنِعْمَ الْوَكِيلُ",
+            "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّٰهِ",
+            "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ",
+            "يَا رَحْمَانُ يَا رَحِيمُ"
+        )
+        val randomDhikr = dhikrs.random()
+
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_daily_dhikr, null)
+        val tvDhikr = dialogView.findViewById<TextView>(R.id.tv_dhikr_arabic)
+        val btnClose = dialogView.findViewById<View>(R.id.btn_close)
+
+        tvDhikr.text = randomDhikr
+
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+            .setView(dialogView)
+            .setCancelable(true)
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        btnClose.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     private fun setupThemeToggle() {
@@ -207,6 +249,10 @@ class HomeFragment : Fragment() {
                 card.strokeWidth = 0
             }
         }
+    }
+
+    companion object {
+        private var hasShownDhikrThisSession = false
     }
 
     override fun onDestroyView() {
