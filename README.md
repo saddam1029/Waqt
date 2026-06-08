@@ -30,17 +30,31 @@ A clean, modern, and minimal Android app for Muslims to set and get notified for
 
 ### Light Theme
 
-| Home | Prayer Times | Tasbeeh | Daily Dhikr | Settings |
-|:----:|:------------:|:-------:|:-----------:|:--------:|
-
-| <img src="app/src/main/res/drawable/light_home.jpeg" width="200"/> | <img src="app/src/main/res/drawable/light_prayer.jpeg" width="200"/> | <img src="app/src/main/res/drawable/light_tasbeeh.jpeg" width="200"/> | <img src="app/src/main/res/drawable/light_dhiker.jpeg" width="200"/> | <img src="app/src/main/res/drawable/light_setting.jpeg" width="200"/> |
+<p align="center">
+  <img src="app/src/main/res/drawable/light_home.jpeg" width="180"/><br><b>Home</b>
+  &nbsp;&nbsp;&nbsp;
+  <img src="app/src/main/res/drawable/light_prayer.jpeg" width="180"/><br><b>Prayer Times</b>
+  &nbsp;&nbsp;&nbsp;
+  <img src="app/src/main/res/drawable/light_tasbeeh.jpeg" width="180"/><br><b>Tasbeeh</b>
+  &nbsp;&nbsp;&nbsp;
+  <img src="app/src/main/res/drawable/light_dhiker.jpeg" width="180"/><br><b>Daily Dhikr</b>
+  &nbsp;&nbsp;&nbsp;
+  <img src="app/src/main/res/drawable/light_setting.jpeg" width="180"/><br><b>Settings</b>
+</p>
 
 ### Dark Theme
 
-| Home | Prayer Times | Tasbeeh | Daily Dhikr | Settings |
-
-|:----:|:------------:|:-------:|:-----------:|:--------:|
-| <img src="app/src/main/res/drawable/dark_home.jpeg" width="200"/> | <img src="app/src/main/res/drawable/dark_prayer.jpeg" width="200"/> | <img src="app/src/main/res/drawable/dark_tasbeeh.jpeg" width="200"/> | <img src="app/src/main/res/drawable/dark_dhiker.jpeg" width="200"/> | <img src="app/src/main/res/drawable/dark_setting.jpeg" width="200"/> |
+<p align="center">
+  <img src="app/src/main/res/drawable/dark_home.jpeg" width="180"/><br><b>Home</b>
+  &nbsp;&nbsp;&nbsp;
+  <img src="app/src/main/res/drawable/dark_prayer.jpeg" width="180"/><br><b>Prayer Times</b>
+  &nbsp;&nbsp;&nbsp;
+  <img src="app/src/main/res/drawable/dark_tasbeeh.jpeg" width="180"/><br><b>Tasbeeh</b>
+  &nbsp;&nbsp;&nbsp;
+  <img src="app/src/main/res/drawable/dark_dhiker.jpeg" width="180"/><br><b>Daily Dhikr</b>
+  &nbsp;&nbsp;&nbsp;
+  <img src="app/src/main/res/drawable/dark_setting.jpeg" width="180"/><br><b>Settings</b>
+</p>
 
 ---
 
