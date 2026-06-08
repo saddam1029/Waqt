@@ -1,7 +1,7 @@
 <div align="center">
 
 <p align="center">
-  <img src="app/src/main/res/drawable/logo.png" width="150"/>
+  <img src="app/src/main/res/drawable/waqt.png" width="150"/>
 </p>
 <img src="assets/app_icon.png" alt="Waqt App Icon" width="100dp"/>
 
