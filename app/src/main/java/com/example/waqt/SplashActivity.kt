@@ -11,6 +11,12 @@ import androidx.core.view.WindowInsetsCompat
 
 class SplashActivity : AppCompatActivity() {
 
+    private val handler = Handler(Looper.getMainLooper())
+    private val runnable = Runnable {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,9 +27,11 @@ class SplashActivity : AppCompatActivity() {
             insets
         }
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }, 2000)
+        handler.postDelayed(runnable, 2000)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacks(runnable)
     }
 }

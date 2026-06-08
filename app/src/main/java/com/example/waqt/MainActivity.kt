@@ -53,17 +53,6 @@ class MainActivity : AppCompatActivity() {
         }
         
         checkAndRequestPermissions()
-        applyInitialTheme()
-    }
-
-    private fun applyInitialTheme() {
-        val prefs = com.example.waqt.prefs.PrayerPrefs(this)
-        val mode = if (prefs.isDarkMode) {
-            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
-        } else {
-            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
-        }
-        androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(mode)
     }
 
     private fun setupNavigation() {
@@ -83,19 +72,19 @@ class MainActivity : AppCompatActivity() {
     private fun restoreNavigation() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         
-        homeFragment = (supportFragmentManager.findFragmentByTag("home") as? HomeFragment) ?: HomeFragment()
+        homeFragment = supportFragmentManager.findFragmentByTag("home") as? HomeFragment ?: HomeFragment()
         setTimesFragment = supportFragmentManager.findFragmentByTag("setTimes") as? SetTimesFragment ?: SetTimesFragment()
         tasbeehFragment = supportFragmentManager.findFragmentByTag("tasbeeh") as? TasbeehFragment ?: TasbeehFragment()
         settingsFragment = supportFragmentManager.findFragmentByTag("settings") as? SettingsFragment ?: SettingsFragment()
         
-        val activeTag = when (bottomNav.selectedItemId) {
-            R.id.navigation_home -> "home"
-            R.id.navigation_set_times -> "setTimes"
-            R.id.navigation_tasbeeh -> "tasbeeh"
-            R.id.navigation_settings -> "settings"
-            else -> "home"
+        // Find active fragment based on visibility to be more reliable during restoration
+        activeFragment = when {
+            homeFragment.isAdded && !homeFragment.isHidden -> homeFragment
+            setTimesFragment.isAdded && !setTimesFragment.isHidden -> setTimesFragment
+            tasbeehFragment.isAdded && !tasbeehFragment.isHidden -> tasbeehFragment
+            settingsFragment.isAdded && !settingsFragment.isHidden -> settingsFragment
+            else -> homeFragment
         }
-        activeFragment = supportFragmentManager.findFragmentByTag(activeTag) ?: homeFragment
         
         setupBottomNavListeners(bottomNav)
     }

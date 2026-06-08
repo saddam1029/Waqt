@@ -29,7 +29,10 @@ class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
-    private lateinit var prefs: PrayerPrefs
+    
+    @javax.inject.Inject
+    lateinit var prefs: PrayerPrefs
+
     private var isUpdatingUi = false
 
     private val soundPickerLauncher = registerForActivityResult(
@@ -63,7 +66,6 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        prefs = PrayerPrefs(requireContext())
 
         setupSwitches()
         updatePermissionStatus()
