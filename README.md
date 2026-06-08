@@ -1,7 +1,8 @@
 <div align="center">
 
 <div align="center">
-<p <img src=app/src/main/res/drawable/banner.png" alt="Waqt Banner" width="100%"/> </p>
+    <img src="app/src/main/res/drawable/banner.png" alt="Waqt Banner" width="100%" />
+</div>
 
 <br/>
 <p align="center">
